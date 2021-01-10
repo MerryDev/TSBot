@@ -7,6 +7,7 @@ import de.digitaldevs.bot.SecurityBot;
 import de.digitaldevs.bot.cryptic.Cryptographer;
 import de.digitaldevs.bot.cryptic.Password;
 import de.digitaldevs.bot.cryptic.PasswordManager;
+import de.digitaldevs.bot.cryptic.UserManager;
 import de.digitaldevs.bot.utils.BBCode;
 import de.digitaldevs.bot.utils.Color;
 
@@ -32,7 +33,7 @@ public class AddUserCommand {
                   String username = args[1];
                   String password = args[2];
 
-                  if (!PasswordManager.userExists(username)) {
+                  if (!UserManager.userExists(username)) {
                     Cryptographer cryptographer = new Cryptographer();
                     String encryptedPassword =
                         cryptographer.encrypt(new Password(username, password));

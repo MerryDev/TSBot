@@ -5,6 +5,7 @@ import com.github.theholywaffle.teamspeak3.api.event.TS3EventAdapter;
 import com.github.theholywaffle.teamspeak3.api.event.TextMessageEvent;
 import de.digitaldevs.bot.SecurityBot;
 import de.digitaldevs.bot.cryptic.PasswordManager;
+import de.digitaldevs.bot.cryptic.UserManager;
 import de.digitaldevs.bot.utils.BBCode;
 import de.digitaldevs.bot.utils.Color;
 
@@ -28,7 +29,7 @@ public class RemoveUserCommand {
                 if (args.length == 2) {
                   String username = args[1];
 
-                  if (PasswordManager.userExists(username)) {
+                  if (UserManager.userExists(username)) {
                     PasswordManager.deleteUser(username);
                     API.sendPrivateMessage(
                         invokerID,

@@ -7,6 +7,7 @@ import de.digitaldevs.bot.SecurityBot;
 import de.digitaldevs.bot.cryptic.Cryptographer;
 import de.digitaldevs.bot.cryptic.Password;
 import de.digitaldevs.bot.cryptic.PasswordManager;
+import de.digitaldevs.bot.cryptic.UserManager;
 import de.digitaldevs.bot.mysql.MySQL;
 import de.digitaldevs.bot.utils.BBCode;
 import de.digitaldevs.bot.utils.Color;
@@ -32,7 +33,7 @@ public class UpdatePasswordCommand {
                   String username = args[1];
                   String newPassword = args[2];
 
-                  if (PasswordManager.userExists(username)) {
+                  if (UserManager.userExists(username)) {
                     Cryptographer cryptographer = new Cryptographer();
                     PasswordManager.updatePassword(
                         username, cryptographer.encrypt(new Password(username, newPassword)));

@@ -4,6 +4,7 @@ import com.github.theholywaffle.teamspeak3.TS3Api;
 import com.github.theholywaffle.teamspeak3.api.event.ClientJoinEvent;
 import com.github.theholywaffle.teamspeak3.api.event.TS3EventAdapter;
 import de.digitaldevs.bot.SecurityBot;
+import de.digitaldevs.bot.Var;
 import de.digitaldevs.bot.utils.BBCode;
 import lombok.Data;
 
@@ -25,6 +26,7 @@ public class ClientJoinListener {
                     + BBCode.BOLD.getCLOSING_TAG()
                     + "!"
                     + " Bitte gebe dein persönliches Passwort ein, um deine Rechte zu bekommen!");
+            Var.users.put(e.getClientId(), false);
           }
         });
   }

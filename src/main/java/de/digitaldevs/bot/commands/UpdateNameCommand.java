@@ -5,6 +5,7 @@ import com.github.theholywaffle.teamspeak3.api.event.TS3EventAdapter;
 import com.github.theholywaffle.teamspeak3.api.event.TextMessageEvent;
 import de.digitaldevs.bot.SecurityBot;
 import de.digitaldevs.bot.cryptic.PasswordManager;
+import de.digitaldevs.bot.cryptic.UserManager;
 import de.digitaldevs.bot.utils.BBCode;
 import de.digitaldevs.bot.utils.Color;
 
@@ -29,7 +30,7 @@ public class UpdateNameCommand {
                   String oldName = args[1];
                   String newName = args[2];
 
-                  if (PasswordManager.userExists(oldName)) {
+                  if (UserManager.userExists(oldName)) {
                     PasswordManager.updateUsername(oldName, newName);
                     API.sendPrivateMessage(
                         invokerID,
