@@ -5,12 +5,14 @@ import com.github.theholywaffle.teamspeak3.TS3Config;
 import com.github.theholywaffle.teamspeak3.TS3Query;
 import com.github.theholywaffle.teamspeak3.TS3Query.FloodRate;
 import de.digitaldevs.bot.commands.AddUserCommand;
+import de.digitaldevs.bot.commands.LoginCommand;
 import de.digitaldevs.bot.commands.RemoveUserCommand;
 import de.digitaldevs.bot.commands.UpdateNameCommand;
 import de.digitaldevs.bot.commands.UpdatePasswordCommand;
 import de.digitaldevs.bot.config.ConfigProperties;
 import de.digitaldevs.bot.config.MySQLProperties;
 import de.digitaldevs.bot.listener.ClientJoinListener;
+import de.digitaldevs.bot.listener.ClientLeaveListener;
 import de.digitaldevs.bot.mysql.MySQL;
 import de.digitaldevs.bot.formatter.LogFormatter;
 import java.io.File;
@@ -94,6 +96,7 @@ public class SecurityBot {
     LOGGER.info("Lade Events...");
     API.registerAllEvents();
     new ClientJoinListener().addListener();
+    new ClientLeaveListener().addListener();
   }
 
   private static void initCommands() {
@@ -102,6 +105,7 @@ public class SecurityBot {
     new RemoveUserCommand().register();
     new UpdateNameCommand().register();
     new UpdatePasswordCommand().register();
+    new LoginCommand().register();
   }
 
 }
