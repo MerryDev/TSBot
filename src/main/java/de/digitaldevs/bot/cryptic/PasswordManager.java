@@ -6,22 +6,6 @@ import java.sql.ResultSet;
 
 public class PasswordManager {
 
-  public static boolean userExists(String username) {
-    ResultSet resultSet =
-        MySQL.getResult("SELECT * FROM teamspeak_bot.user WHERE username='" + username + "';");
-    try {
-      while (resultSet.next()) {
-        return true;
-      }
-    } catch (Exception exception) {
-      SecurityBot.getLOGGER()
-          .severe(
-              "Ein Fehler bei der Interaktion mit der Datenbank ist aufgetreten! "
-                  + exception.getMessage());
-    }
-    return false;
-  }
-
   public static void createUser(String username, String password) {
     MySQL.update(
         "INSERT INTO teamspeak_bot.user (username, password) VALUES ('"
@@ -53,7 +37,7 @@ public class PasswordManager {
             + "';");
   }
 
-  public static Password getPassword(String username) {
+  public static String getPassword(String username) {
     ResultSet resultSet =
         MySQL.getResult(
             "SELECT teamspeak_bot.user.password FROM teamspeak_bot.user WHERE username='"
@@ -61,7 +45,7 @@ public class PasswordManager {
                 + "';");
     try {
       while (resultSet.next()) {
-        return new Password(username, resultSet.getString("password"));
+        return resultSet.getString("password");
       }
     } catch (Exception exception) {
       SecurityBot.getLOGGER()
