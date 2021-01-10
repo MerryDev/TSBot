@@ -8,7 +8,7 @@ public enum BBCode {
   @Getter private final String OPENING_TAG;
   @Getter private final String CLOSING_TAG;
 
-  BBCode(String OPENING_TAG, String CLOSING_TAG) {
+  BBCode(final String OPENING_TAG, final String CLOSING_TAG) {
     this.OPENING_TAG = OPENING_TAG;
     this.CLOSING_TAG = CLOSING_TAG;
   }
