@@ -1,4 +1,4 @@
-package de.digitaldevs.bot.utils;
+package de.digitaldevs.bot.formatter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

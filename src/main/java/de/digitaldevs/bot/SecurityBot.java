@@ -8,7 +8,7 @@ import de.digitaldevs.bot.config.ConfigProperties;
 import de.digitaldevs.bot.config.MySQLProperties;
 import de.digitaldevs.bot.listener.ClientJoinListener;
 import de.digitaldevs.bot.mysql.MySQL;
-import de.digitaldevs.bot.utils.LogFormatter;
+import de.digitaldevs.bot.formatter.LogFormatter;
 import java.io.File;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
