@@ -7,6 +7,7 @@ import com.github.theholywaffle.teamspeak3.TS3Query.FloodRate;
 import de.digitaldevs.bot.commands.AddUserCommand;
 import de.digitaldevs.bot.commands.RemoveUserCommand;
 import de.digitaldevs.bot.commands.UpdateNameCommand;
+import de.digitaldevs.bot.commands.UpdatePasswordCommand;
 import de.digitaldevs.bot.config.ConfigProperties;
 import de.digitaldevs.bot.config.MySQLProperties;
 import de.digitaldevs.bot.listener.ClientJoinListener;
@@ -100,6 +101,7 @@ public class SecurityBot {
     new AddUserCommand().register();
     new RemoveUserCommand().register();
     new UpdateNameCommand().register();
+    new UpdatePasswordCommand().register();
   }
 
 }
