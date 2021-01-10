@@ -24,6 +24,7 @@ public class AddUserCommand {
 
             if (e.getTargetClientId() == BOT_ID) {
               String message = e.getMessage();
+
               if (message.startsWith("!adduser")) {
 
                 String[] args = message.split(" ");
