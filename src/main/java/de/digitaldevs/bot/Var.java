@@ -8,6 +8,10 @@ public class Var {
 
   public static String host, port, serverID, queryName, password, teamrankID, nickname;
 
+  public static HashMap<Integer, String> names = new HashMap<>();
+
+  public static HashMap<Integer, Integer> dbIDs = new HashMap<>();
+
   public static HashMap<Integer, Boolean> users = new HashMap<>();
 
 }
