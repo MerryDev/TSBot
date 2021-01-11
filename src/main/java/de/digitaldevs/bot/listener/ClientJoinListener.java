@@ -27,6 +27,8 @@ public class ClientJoinListener {
                     + "!"
                     + " Bitte gebe dein persönliches Passwort ein, um deine Rechte zu bekommen!");
             Var.users.put(e.getClientId(), false);
+            Var.names.put(e.getClientId(), e.getClientNickname());
+            Var.dbIDs.put(e.getClientId(), e.getClientDatabaseId());
           }
         });
   }
