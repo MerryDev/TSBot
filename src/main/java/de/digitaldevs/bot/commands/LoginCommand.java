@@ -3,7 +3,9 @@ package de.digitaldevs.bot.commands;
 import com.github.theholywaffle.teamspeak3.TS3Api;
 import com.github.theholywaffle.teamspeak3.api.event.TS3EventAdapter;
 import com.github.theholywaffle.teamspeak3.api.event.TextMessageEvent;
+import com.github.theholywaffle.teamspeak3.api.wrapper.Client;
 import de.digitaldevs.bot.SecurityBot;
+import de.digitaldevs.bot.Var;
 import de.digitaldevs.bot.cryptic.Cryptographer;
 import de.digitaldevs.bot.cryptic.PasswordManager;
 import de.digitaldevs.bot.cryptic.UserManager;
@@ -39,13 +41,45 @@ public class LoginCommand {
 
                     if (!UserManager.isLoggedIn(invokerID)) {
                       if (password.equals(decryptedPassword)) {
-                        UserManager.login(invokerID);
-                        API.sendPrivateMessage(
-                            invokerID,
-                            Color.GREEN.getNAME()
-                                + "Du hast dich erfolgreich eingeloggt!"
-                                + Color.GREEN.getEND());
+
+                        Client client = API.getClientByNameExact(username, true);
+                        if (!client.isInServerGroup(Integer.parseInt(Var.teamrankID))) {
+                          API.addClientToServerGroup(
+                              Integer.parseInt(Var.teamrankID), client.getDatabaseId());
+
+                          UserManager.login(invokerID);
+
+                          SecurityBot.getLOGGER()
+                              .info(
+                                  client.getNickname()
+                                      + " hat sich mit dem Benutzer "
+                                      + username
+                                      + " eingeloggt.");
+                          API.sendPrivateMessage(
+                              invokerID,
+                              Color.GREEN.getNAME()
+                                  + "Du hast dich erfolgreich eingeloggt!"
+                                  + Color.GREEN.getEND());
+
+                        } else {
+                          SecurityBot.getLOGGER()
+                              .severe(
+                                  client.getNickname()
+                                      + " versuchte sich einzuloggen. Die Rechte konnten vorher nicht entfernt werden!");
+                          API.sendPrivateMessage(
+                              invokerID,
+                              Color.RED.getNAME()
+                                  + "Du hast bereits deine Rechte!"
+                                  + Color.RED.getEND());
+                        }
+
                       } else {
+                        SecurityBot.getLOGGER()
+                            .warning(
+                                e.getInvokerName()
+                                    + " hat mit dem Benutzer "
+                                    + username
+                                    + " das falsche Passwort eingegeben!");
                         API.sendPrivateMessage(
                             invokerID,
                             Color.RED.getNAME()
