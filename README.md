@@ -2,6 +2,9 @@
 
 _____
 
+### **Vorraussetzungen**
+* MySQL-Server mit der "Test"-Datenbank & Einen Benutzer, der Datenbanken erstellen kann
+
 ### **Features**
 
 * Rechte werden über ein Nutzeraccount verwaltet
